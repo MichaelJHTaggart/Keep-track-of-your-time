@@ -1,16 +1,30 @@
-import React { Component } from 'react'
-import Timestamps from './Timestamps'
-import axios from 'axios'
+import React, { Component } from 'react';
+import Timestamps from './Timestamps';
+import axios from 'axios';
 
 class Display extends Component {
     constructor() {
         super();
         this.state = {
-            timestamps: []
+            timestamps: [],
         }
+    }
+
+
+    componentDidMount() {
+        axios.get('/api/timestamps').then((res) => {
+            this.setState({
+                timestamps: res.data,
+            })
+        })
+    }
+
+    // addToTimestamp(name, data) {
+    //     axios.post('/api/timestamps').then((res))
+    // }
+    render() {
+        return "hi"
     }
 }
 
-componentDidMount() { }
-
-addToTimestamp(id, projectName, timeData) { }
+export default Display

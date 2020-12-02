@@ -9,9 +9,9 @@ app.use(express.json())
 // Timestamp endpoints
 app.get('/api/timestamps', timestampsCtrl.getTimestamps)
 app.post('/api/timestamps', timestampsCtrl.addTimestamp)
-app.get('/api/timestamps', timestampsCtrl.getOneTimestamp)
-app.put('/api/timestamps', timestampsCtrl.editProjectName)
-app.delete('/api/timestamps', timestampsCtrl.deleteTimestamp)
+app.get('/api/timestamps/:name', timestampsCtrl.getOneTimestamp)
+app.put('/api/timestamps/:name', timestampsCtrl.editProjectName)
+app.delete('/api/timestamps/:name', timestampsCtrl.deleteTimestamp)
 
 
 app.listen(SERVER_PORT, () => console.log(`Hello I am listening on ${SERVER_PORT}`))
