@@ -7,7 +7,12 @@ class Display extends Component {
         super();
         this.state = {
             timestamps: [],
+            stopwatch: []
         }
+        this.addToTimestamp = this.addToTimestamp.bind(this)
+        this.getOneTimestamp = this.getOneTimestamp.bind(this)
+        this.editProjectName = this.editProjectName.bind(this)
+        this.deleteTimestamp = this.deleteTimestamp.bind(this)
     }
 
 
@@ -19,11 +24,34 @@ class Display extends Component {
         })
     }
 
-    // addToTimestamp(name, data) {
-    //     axios.post('/api/timestamps').then((res))
-    // }
+    addTimestamp(name, data) {
+        const body = { project: name, data }
+
+        axios.post('/api/timestamps', body).then((res) => {
+            this.setState({
+                timestamps: res.data,
+            })
+        })
+    }
+
+    getOneTimestamp(name) {
+
+    }
+    editProjectName(name) {
+
+    }
+    deleteTimestamp(name) {
+
+    }
+
+
     render() {
-        return "hi"
+        return (
+            <div>
+                <Timestamps addTimestamp={this.addTimestamp} timestamp={this.state.timestamp} />
+                {/* <Stopwatch /> */}
+            </div>
+        )
     }
 }
 
