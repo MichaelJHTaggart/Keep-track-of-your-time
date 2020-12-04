@@ -1,0 +1,26 @@
+.project{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+#projectButton {
+    display: flex;
+    background-color: #83c7f8;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    height: 35px;
+    width: 90px;
+  }
+  button:hover {
+    background-color: #106ba3;
+  }

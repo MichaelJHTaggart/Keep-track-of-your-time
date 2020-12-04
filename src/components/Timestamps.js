@@ -1,12 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Project from './Project'
+import '../Timestamps.css'
 
 const Timestamps = (props) => {
-    const timestampsMap = props.timestamps.map((element) => {
+
+    const timestampsMap = props.timestamps.map((element, index) => {
         return (
-            <Project addTimestamp={props.addTimestamp} key={element.name} timestamp={element} />
+            <Project
+                key={props.index}
+                timestamp={element}
+                getOneTimestamp={props.getOneTimestamp}
+                editProjectName={props.editProjectName}
+                deleteTimestamp={props.deleteTimestamp}
+            />
         )
+
     })
 
-    return <div className="timestamps">{timestampsMap}</div>
+    return (
+        <div className="timestamps-container">
+            <h2 className="heading">Timestamps</h2>
+            <div className="Timestamps">
+                {timestampsMap}
+            </div>
+        </div>
+    )
 }
 export default Timestamps

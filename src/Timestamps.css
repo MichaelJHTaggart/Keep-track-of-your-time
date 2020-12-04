@@ -1,0 +1,29 @@
+.timestamps-container {
+    height: 80vh;
+    width: 40vw;
+    display: block;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: rgb(132, 148, 161);
+    box-shadow: 0 3px 6px rgb(12, 12, 12);
+}
+.heading {
+    height: 50px;
+    width: 0 auto;
+    display: flex;
+    justify-self: top;
+    align-self: top;
+    justify-content: center;
+    align-content: center;
+    margin: 0;
+    
+}
+.Timestamps {
+    height: 20vh;
+    width: 39vw;
+    display: block;
+    align-items: center;
+    flex-direction: row;
+    justify-content: start;
+    align-content: start; 
+}

@@ -10,7 +10,7 @@ app.use(express.json())
 app.get('/api/timestamps', timestampsCtrl.getTimestamps)
 app.post('/api/timestamps', timestampsCtrl.addTimestamp)
 app.get('/api/timestamps/:name', timestampsCtrl.getOneTimestamp)
-app.put('/api/timestamps/:name', timestampsCtrl.editProjectName)
+app.put('/api/timestamps/:oldName/:newName', timestampsCtrl.editProjectName)
 app.delete('/api/timestamps/:name', timestampsCtrl.deleteTimestamp)
 
 

@@ -17,8 +17,8 @@
 
 
 let id = 1 //We need to define id. Our id is going to start at 0 and increment upwards
-let name //We need to define name. We do not have to give it a value, as the users will give us the values of the name
-let data //We need to define data. Again, the users will give us the values of the data
+//We need to define name. We do not have to give it a value, as the users will give us the values of the name
+//We need to define data. Again, the users will give us the values of the data
 
 
 let timestamps = [] //This array is what will hold the data from the user's projects. Each object will be a project shown in timestamps.
@@ -32,17 +32,17 @@ module.exports = { //We need to export these functions for use. ***
         res.status(200).send(timestamps)
     },
     addTimestamp: (req, res) => {       //This function will accept a request from the user to add to the existing data.
-        let { name, data } = req.body
-
-        const index = timestamps.findIndex((element) => element.name === name) //We are going to return the index of the object that has the exact same project name
+        let { project, data } = req.body
+        console.log(req.body)
+        const index = timestamps.findIndex((element) => element.project === project) //We are going to return the index of the object that has the exact same project name
 
         if (index === -1) {         //findIndex() will return a -1 if it doesn't find the information.
-            let project = {         //We want to create an new object with the request data if it doesn't already exist.
+            let timestamp = {         //We want to create an new object with the request data if it doesn't already exist.
                 id,
-                name,
+                project,
                 data
             }
-            timestamps.push(project)        //This will push the new object into the timestamps array each time the function is run.
+            timestamps.push(timestamp)        //This will push the new object into the timestamps array each time the function is run.
             id++                            //increment id so it is updating each time.
         } else {
             timestamps[index].data += data //I want the data that exists to be added upon.
@@ -52,7 +52,7 @@ module.exports = { //We need to export these functions for use. ***
     getOneTimestamp: (req, res) => {
         const { name } = req.params
 
-        const index = timestamps.findIndex((element) => element.name === name)
+        const index = timestamps.findIndex((element) => element.project === name)
 
         if (index === -1) {
             return res.status(404).send('Timestamp does not exist')
@@ -67,21 +67,19 @@ module.exports = { //We need to export these functions for use. ***
     },
 
     editProjectName: (req, res) => {
-        const { name } = req.params
-        const { newName } = req.body
+        const { oldName, newName } = req.params
 
-        const index = timestamps.findIndex((element) => element.name === name)
-
+        const index = timestamps.findIndex((element) => element.project === oldName)
         if (index === -1) {
-            return res.status(404).send('Timestamp does not exist')
+            return res.status(500).send('Timestamp does not exist')
         }
-        timestamps[index].name = newName
+        timestamps[index].project = newName
         //allow the new project name to be added to the timestamps array.
         res.status(200).send(timestamps)
     },
     deleteTimestamp: (req, res) => {
         const { name } = req.params
-        const index = timestamps.findIndex((element) => element.name === name)
+        const index = timestamps.findIndex((element) => element.project === name)
 
         if (index === -1) {
             return res.status(404).send('Timestamp does not exist')
